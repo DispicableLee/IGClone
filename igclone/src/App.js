@@ -7,11 +7,29 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-//=========================================================================================
+//================================ mui ====================================================
 //================================= components ============================================
 import Post from './components/Post'
-
+//================================ useState/useEffect =====================================
+import { useState, useEffect } from 'react';
 function App() {
+  const [posts, setPosts] = useState([])
+//========================== initial fetch ================================================
+  useEffect(()=>{
+    fetch("http://localhost:3000/users")
+    .then((res)=>res.json())
+    .then((json)=>{
+      for(let i = 0; i<json.length; i++){
+        console.log("each user", json[i])
+        console.log(json[i].posts)
+        setPosts([posts, ...json[i].posts])
+      }
+      console.log(posts)
+    })
+  },[])
+  
+
+
   return (
     <div className="App">
 {/*================================== nav bar ============================================*/}

@@ -39,7 +39,7 @@
             "posts": [
                 {
                     "post-id": 1,
-                    "poster-id": 1,
+                    "poster-id": 2,
                     "post-title": " Post",
                     "post-content": "this post is ",
                     "post-image": "image",
