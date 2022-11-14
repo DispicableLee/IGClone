@@ -9,25 +9,23 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 //================================ mui ====================================================
 //================================= components ============================================
-import Post from './components/Post'
+import PostList from './components/PostList';
 //================================ useState/useEffect =====================================
 import { useState, useEffect } from 'react';
 function App() {
-  const [posts, setPosts] = useState([])
+  const [userList, setUserList] = useState([])
 //========================== initial fetch ================================================
   useEffect(()=>{
     fetch("http://localhost:3000/users")
     .then((res)=>res.json())
     .then((json)=>{
-      for(let i = 0; i<json.length; i++){
-        console.log("each user", json[i])
-        console.log(json[i].posts)
-        setPosts([posts, ...json[i].posts])
-      }
-      console.log(posts)
+        setUserList(json)
     })
   },[])
-  
+//============= setting posts from json ===================================
+  const userPosts = userList.map((user)=>{
+    return user.posts
+  })
 
 
   return (
@@ -59,7 +57,7 @@ function App() {
     </Box>
 {/* ========================================postlist============================================== */}
 
-      <Post/>
+      <PostList userPosts={userPosts}/>
 
     </div>
   );

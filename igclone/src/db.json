@@ -7,13 +7,13 @@
             "profile-pic": "dddssss",
             "posts": [
                 {
-                    "post-id": 1,
-                    "poster-id": 1,
-                    "post-title": "Dank Post",
-                    "post-content": "this post is dank",
-                    "post-image": "dankimage",
-                    "post-likes": [1,2,3],
-                    "post-comments": [
+                    "postId": 1,
+                    "posterId": 1,
+                    "postTitle": "Dank Post",
+                    "postContent": "this post is dank",
+                    "postImage": "https://i.ytimg.com/vi/vhl9wWLv2Yo/maxresdefault.jpg",
+                    "postLikes": [1,2,3],
+                    "postComments": [
                         {
                             "comment-id": 1,
                             "comment-username": "someotheruser",
@@ -38,13 +38,13 @@
             "profile-pic": "dddssss",
             "posts": [
                 {
-                    "post-id": 1,
-                    "poster-id": 2,
-                    "post-title": " Post",
-                    "post-content": "this post is ",
-                    "post-image": "image",
-                    "post-likes": [1,2,3,4,5],
-                    "post-comments": [
+                    "postId": 1,
+                    "posterId": 2,
+                    "postTitle": " Post",
+                    "postContent": "this post is ",
+                    "postImage": "https://w7.pngwing.com/pngs/558/611/png-transparent-phil-mcgraw-dr-phil-youtube-meme-dank-meme-thumbnail.png",
+                    "postLikes": [1,2,3,4,5],
+                    "postComments": [
                         {
                             "comment-id": 1,
                             "comment-username": "someotheruser",
