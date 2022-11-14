@@ -1,0 +1,66 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "hawtcurryans",
+            "password": "imugly",
+            "profile-pic": "dddssss",
+            "posts": [
+                {
+                    "post-id": 1,
+                    "poster-id": 1,
+                    "post-title": "Dank Post",
+                    "post-content": "this post is dank",
+                    "post-image": "dankimage",
+                    "post-likes": [1,2,3],
+                    "post-comments": [
+                        {
+                            "comment-id": 1,
+                            "comment-username": "someotheruser",
+                            "comment-content": "i think this post is dank",
+                            "comment-likes": [1,2]
+                        },
+                        {
+                            "comment-id": 2,
+                            "comment-username": "rando",
+                            "comment-content": "i dont think this post is dank",
+                            "comment-likes": []
+                        }
+                    ]
+                }
+            ],
+            "followers": [1,2,3]
+        },
+        {
+            "id": 2,
+            "username": "uglykoreans",
+            "password": "imbeautiful",
+            "profile-pic": "dddssss",
+            "posts": [
+                {
+                    "post-id": 1,
+                    "poster-id": 1,
+                    "post-title": " Post",
+                    "post-content": "this post is ",
+                    "post-image": "image",
+                    "post-likes": [1,2,3,4,5],
+                    "post-comments": [
+                        {
+                            "comment-id": 1,
+                            "comment-username": "someotheruser",
+                            "comment-content": "i think this post ",
+                            "comment-likes": [1,2]
+                        },
+                        {
+                            "comment-id": 2,
+                            "comment-username": "rando",
+                            "comment-content": "we live in a society",
+                            "comment-likes": []
+                        }
+                    ]
+                }
+            ],
+            "followers": [1,2,3,4,5]
+        }
+    ]
+}
