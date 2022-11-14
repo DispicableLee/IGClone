@@ -3,10 +3,8 @@ import Post from './Post'
 
 export default function PostList(userPosts){
     const userPostList = userPosts.userPosts
-    console.log(userPostList)
     const renderedPosts = userPostList.map((p)=>{
        return p.map((postInfo)=>{
-            console.log(postInfo.postComments)
             return (
                 <Post
                     key={postInfo.postId}
