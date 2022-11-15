@@ -36,7 +36,15 @@ export default function Post({title, content, image, likes, comments}) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card 
+      sx={{ maxWidth: 345 }}
+      style={
+        {
+          display: 'inline-block',
+          margin: 10
+        }
+      }
+      >
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
