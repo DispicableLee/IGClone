@@ -28,7 +28,18 @@ const ExpandMore = styled((props) => {
   }),
 }));
 //====================================================================================================
-export default function Post({title, content, image, likes, comments}) {
+export default function Post(
+  {
+    description, 
+    likes, 
+    is_liked, 
+    image_url,
+    date_posted,
+    user_posted_username,
+    created_at,
+    updated_at, 
+    comments}
+  ) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -43,8 +54,7 @@ export default function Post({title, content, image, likes, comments}) {
           display: 'inline-block',
           margin: 10
         }
-      }
-      >
+      }>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -56,18 +66,18 @@ export default function Post({title, content, image, likes, comments}) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={title}
-        subheader="September 14, 2016"
+        title="post"
+        subheader={created_at}
       />
       <CardMedia
         component="img"
         height="194"
-        image={image}
+        image={image_url}
         alt="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {content}
+          {description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
