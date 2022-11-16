@@ -1,15 +1,8 @@
 import * as React from "react";
-//================================ mui ====================================================
-
 //================================= components ============================================
-import PostList from "./components/PostList";
-import Profile from "./components/Pages/Profile";
+import PostList from './components/PostList'
 //================================ useState/useEffect =====================================
 import { useState, useEffect } from "react";
-
-
-
-
 
 export default function Home() {
   const [userList, setUserList] = useState([]);
@@ -25,7 +18,6 @@ export default function Home() {
   const userPosts = userList.map((user) => {
     return user.posts;
   });
-  console.log(userPosts);
   return (
     <div className="App">
       {/* ========================================= header w/routes =================================== */}

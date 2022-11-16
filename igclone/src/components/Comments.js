@@ -5,9 +5,9 @@ import Typography from '@mui/material/Typography';
 export default function Comments(props){
     return (
         <div>
-            <h1>{props.username}</h1>
-            <Typography>{props.content}</Typography>
-            <Typography>{props.likes.length}</Typography>
+            <Typography>{props.username}</Typography>
+            <Typography>{props.comment}</Typography>
+        
         </div>
     )
 }
