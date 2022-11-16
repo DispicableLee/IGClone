@@ -30,6 +30,7 @@ const ExpandMore = styled((props) => {
 //====================================================================================================
 export default function Post(
   {
+    postId,
     description, 
     likes, 
     is_liked, 
@@ -45,6 +46,7 @@ export default function Post(
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  console.log(user_posted_username)
 
   return (
     <Card 
@@ -66,9 +68,10 @@ export default function Post(
             <MoreVertIcon />
           </IconButton>
         }
-        title="post"
-        subheader={created_at}
+        title={user_posted_username}
+        subheader={date_posted}
       />
+      <Typography>{user_posted_username}</Typography>
       <CardMedia
         component="img"
         height="194"
@@ -99,7 +102,7 @@ export default function Post(
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <CommentsList comments={comments}/>
+          <CommentsList comments={comments} poster={user_posted_username}/>
         </CardContent>
       </Collapse>
     </Card>

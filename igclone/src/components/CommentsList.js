@@ -3,13 +3,17 @@ import Comments from "./Comments";
 
 export default function CommentsList(comments){
     const commentList = comments.comments
-    console.log(commentList)
     const renderedComments = commentList.map((comment)=>{
         return (
             <Comments
-                username={comment.commentUsername}
-                content={comment.commentContent}
-                likes={comment.commentLikes}
+                key={comment.id}
+                id={comment.id}
+                comment={comment.comment}
+                created_at={comment.created_at}
+                post_id={comment.post_id}
+                updated_at={comment.updated_at}
+                user_id={comment.user_id}
+                username={comment.commented_user.username}
             />
         )
     })
