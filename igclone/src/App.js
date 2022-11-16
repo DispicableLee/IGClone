@@ -9,8 +9,14 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 //================================= components ============================================
+import NewUser from "../src/components/Pages/NewUser"
 import Profile from "../src/components/Pages/Profile";
 import Home from "./Home";
+
+
+
+
+
 export default function App() {
   //================================ setting up login =====================================
   const [userName, setUserName] = useState("");
@@ -67,6 +73,9 @@ export default function App() {
               <li>
                 <Link to="/profile">Profile</Link>
               </li>
+              <li>
+                <Link to="/newUser">New User</Link>
+              </li>
             </ul>
           </Toolbar>
           <form
@@ -99,8 +108,10 @@ export default function App() {
         </AppBar>
       </Box>
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/newUser" element={<NewUser/>}/>
       </Routes>
     </div>
   );
