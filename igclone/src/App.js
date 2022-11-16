@@ -5,32 +5,39 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 //================================= components ============================================
 import Profile from "../src/components/Pages/Profile";
 import Home from "./Home";
 export default function App() {
   //================================ setting up login =====================================
-  const [userLogin, setUserLogin] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("")
+  const [currentUser, setCurrentUser] = useState([]);
+  let navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    findCurrentUser(userLogin);
+    findCurrentUser(userName);
   };
   const handleChange = (e) => {
-    setUserLogin(e.target.value);
+    setUserName(e.target.value);
   };
 
-  const changeUser = (user) => {
-    setCurrentUser(user);
-  };
+  const handlePasswordChange = (e)=>{
+    setPassword(e.target.value)
+  }
   function findCurrentUser(username) {
-    const response = fetch(`http://localhost:9292/users/${username}`);
-    const user = response.json();
-    changeUser(user);
-    console.log(user);
+    fetch(`http://localhost:9292/users/username/${username}`)
+    .then((res)=>res.json())
+    .then((json)=>{
+      console.log(json)
+      setCurrentUser(json)
+      console.log(currentUser)
+    })
+    navigate("/")
   }
 
   //========== return ============
@@ -72,13 +79,21 @@ export default function App() {
               Username:{" "}
             </label>
             <br />
-            <input
+            Enter Username: <input
               type="text"
-              name="login"
-              value={userLogin}
+              name="username"
+              value={userName}
               onChange={handleChange}
               autoFocus={true}
             />
+            Enter Password: <input
+              type="text"
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+              autoFocus={true}
+            />
+
             <input type="submit" value="Login" />
           </form>
         </AppBar>

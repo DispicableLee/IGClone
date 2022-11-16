@@ -46,7 +46,6 @@ export default function Post(
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  console.log(user_posted_username)
 
   return (
     <Card 
