@@ -1,13 +1,9 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import Home from "../../Home";
-import { ColorLensOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export default function NewUser() {
+  let navigate = useNavigate()
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
@@ -38,7 +34,13 @@ export default function NewUser() {
       body: JSON.stringify(newObj)
     })
       .then((r) => r.json())
-      .then((data) =>  console.log(data));
+      .then((data) =>  {
+        if(data.user.name.split("").length>0){
+          navigate("/")
+        }else{
+          navigate("/newUser")
+        }
+      });
   }
 
   return (

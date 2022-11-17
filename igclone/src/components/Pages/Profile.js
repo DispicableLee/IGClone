@@ -2,9 +2,11 @@ import React from "react";
 import UserCard from "../UserCard";
 import { useState, useEffect } from "react";
 import ProfilePost from "./ProfilePost";
+import NewPost from "../Newpost"
 
 export default function Profile() {
   const [loggedUserPosts, setLoggedUserPosts] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState([]);
   const [logUser, setLogUser] = useState({
     password: "",
     username: "",
@@ -15,7 +17,6 @@ export default function Profile() {
     const keyName = e.target.name;
     setLogUser({ ...logUser, [keyName]: value });
   }
-  console.log(logUser);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,6 +33,7 @@ export default function Profile() {
     })
       .then((r) => r.json())
       .then((data) => {
+        setLoggedInUser(data.user)
         return setLoggedUserPosts(data.user.posts.map(post => {
           return <ProfilePost key={post.id} post={post} user={data.user}/>;
         }))});
@@ -72,6 +74,7 @@ export default function Profile() {
         </form>
         <button onClick={handleLogout}>Logout</button>
       </div>
+      {<NewPost loggedInUser={loggedInUser}/>}
       <div>
         <h1>Posts</h1>
         <ul>
