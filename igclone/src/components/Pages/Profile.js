@@ -1,9 +1,10 @@
 import React from "react";
 import UserCard from "../UserCard";
 import { useState, useEffect } from "react";
+import ProfilePost from "./ProfilePost";
 
 export default function Profile() {
-  const [logUserPosts, setLogUserPosts] = useState([]);
+  const [loggedUserPosts, setLoggedUserPosts] = useState([]);
   const [logUser, setLogUser] = useState({
     password: "",
     username: "",
@@ -30,15 +31,21 @@ export default function Profile() {
       body: JSON.stringify(newLog),
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        return setLoggedUserPosts(data.user.posts.map(post => {
+          return <ProfilePost key={post.id} post={post} user={data.user}/>;
+        }))});
   }
+
+  // const postList = loggedUser.user.posts.map(post => {
+  //   return <ProfilePost key={post.id} post={post} />;
+  // })
+
 
   function handleLogout() {
     fetch("http://localhost:9292/logout")
-    .then((r) => r.json())
-    .then((data) => console.log(data));
-
-
+      .then((r) => r.json())
+      .then((data) => setLoggedUserPosts(data));
   }
   return (
     <div>
@@ -67,6 +74,9 @@ export default function Profile() {
       </div>
       <div>
         <h1>Posts</h1>
+        <ul>
+     {loggedUserPosts}
+        </ul>
       </div>
     </div>
   );
