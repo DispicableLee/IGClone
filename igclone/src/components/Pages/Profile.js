@@ -9,7 +9,18 @@ export default function Profile() {
     password: "",
     username: "",
   });
-
+  useEffect(() => {
+    fetch("/profile")
+      .then((response) => response.json())
+      .then((data) => {
+        setLoggedUserPosts(
+          data.user.posts.map((post) => {
+            return <ProfilePost key={post.id} post={post} user={data.user} />;
+          })
+        )
+        console.log("profile", data);
+      });
+  }, []);
   function handleChange(e) {
     const value = e.target.value;
     const keyName = e.target.name;
@@ -23,7 +34,8 @@ export default function Profile() {
       password: logUser.password,
       username: logUser.username,
     };
-    fetch("http://localhost:9292/login", {
+
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,21 +44,28 @@ export default function Profile() {
     })
       .then((r) => r.json())
       .then((data) => {
-        return setLoggedUserPosts(data.user.posts.map(post => {
-          return <ProfilePost key={post.id} post={post} user={data.user}/>;
-        }))});
+        console.log("login", data);
+        setLoggedUserPosts(
+          data.user.posts.map((post) => {
+            return <ProfilePost key={post.id} post={post} user={data.user} />;
+          })
+        );
+      });
   }
 
   // const postList = loggedUser.user.posts.map(post => {
   //   return <ProfilePost key={post.id} post={post} />;
   // })
 
-
   function handleLogout() {
-    fetch("http://localhost:9292/logout")
+    fetch("/logout")
       .then((r) => r.json())
       .then((data) => setLoggedUserPosts(data));
   }
+
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/user")
+
   return (
     <div>
       <div>
@@ -74,9 +93,7 @@ export default function Profile() {
       </div>
       <div>
         <h1>Posts</h1>
-        <ul>
-     {loggedUserPosts}
-        </ul>
+        <ul>{loggedUserPosts}</ul>
       </div>
     </div>
   );
