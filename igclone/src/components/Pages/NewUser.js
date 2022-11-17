@@ -38,10 +38,12 @@ export default function NewUser() {
       body: JSON.stringify(newObj)
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) =>  console.log(data));
   }
 
   return (
+    <div>
+    <h1>Sign up</h1>
     <form onSubmit={handleSubmit}>
       <label>Full Name</label>
       <input
@@ -77,5 +79,7 @@ export default function NewUser() {
       />
       <button type="submit">Create Account</button>
     </form>
+    </div>
+
   );
 }
