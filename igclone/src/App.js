@@ -9,42 +9,13 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 //================================= components ============================================
-import NewUser from "../src/components/Pages/NewUser"
+import NewUser from "../src/components/Pages/NewUser";
 import Profile from "../src/components/Pages/Profile";
 import Home from "./Home";
 
-
-
-
-
 export default function App() {
   //================================ setting up login =====================================
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("")
-  const [currentUser, setCurrentUser] = useState([]);
-  let navigate = useNavigate()
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    findCurrentUser(userName);
-  };
-  const handleChange = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const handlePasswordChange = (e)=>{
-    setPassword(e.target.value)
-  }
-  function findCurrentUser() {
-    fetch(`http://localhost:9292/login`)
-    .then((res)=>res.json())
-    .then((json)=>{
-      console.log(json)
-      setCurrentUser(json)
-      console.log(currentUser)
-    })
-    navigate("/")
-  }
+  
 
   //========== return ============
   return (
@@ -78,40 +49,12 @@ export default function App() {
               </li>
             </ul>
           </Toolbar>
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              float: "right",
-            }}
-          >
-            <label htmlFor="login" value="Username">
-              Username:{" "}
-            </label>
-            <br />
-            Enter Username: <input
-              type="text"
-              name="username"
-              value={userName}
-              onChange={handleChange}
-              autoFocus={true}
-            />
-            Enter Password: <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={handlePasswordChange}
-              autoFocus={true}
-            />
-
-            <input type="submit" value="Login" />
-          </form>
         </AppBar>
       </Box>
       <Routes>
-
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/newUser" element={<NewUser/>}/>
+        <Route path="/newUser" element={<NewUser />} />
       </Routes>
     </div>
   );
