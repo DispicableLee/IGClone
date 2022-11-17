@@ -47,9 +47,9 @@ export default function Profile() {
       .then((data) => {
 
         setLoggedInUser(data.user)
-        return setLoggedUserPosts(data.user.posts.map(post => {
-          return <ProfilePost key={post.id} post={post} user={data.user}/>;
-        }))});
+        // return setLoggedUserPosts(data.user.posts.map(post => {
+        //   return <ProfilePost key={post.id} post={post} user={data.user}/>;
+        // }))});
         console.log("login", data);
         setLoggedUserPosts(
           data.user.posts.map((post) => {
@@ -98,7 +98,7 @@ export default function Profile() {
         </form>
         <button onClick={handleLogout}>Logout</button>
       </div>
-      {<NewPost loggedInUser={loggedInUser}/>}
+      {<NewPost loggedInUser={loggedInUser} />}
       <div>
         <h1>Posts</h1>
         <ul>{loggedUserPosts}</ul>
