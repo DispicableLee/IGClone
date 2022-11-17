@@ -35,8 +35,8 @@ export default function App() {
   const handlePasswordChange = (e)=>{
     setPassword(e.target.value)
   }
-  function findCurrentUser(username) {
-    fetch(`http://localhost:9292/users/username/${username}`)
+  function findCurrentUser() {
+    fetch(`http://localhost:9292/login`)
     .then((res)=>res.json())
     .then((json)=>{
       console.log(json)
@@ -96,7 +96,7 @@ export default function App() {
               autoFocus={true}
             />
             Enter Password: <input
-              type="text"
+              type="password"
               name="password"
               value={password}
               onChange={handlePasswordChange}
