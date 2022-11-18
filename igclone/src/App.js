@@ -12,24 +12,28 @@ import { useState } from "react";
 import NewUser from "../src/components/Pages/NewUser";
 import Profile from "../src/components/Pages/Profile";
 import Home from "./Home";
-
+import { useEffect } from "react";
 export default function App() {
   //================================ setting up login =====================================
-  
-const [user, setUser] = useState({})
 
-const getUser = async () => {
-  const req = await fetch('/profile')
-  const res = await req.json()
-  setUser(res.user)
-  console.log(res)
-}
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    fetch("/profile")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("profile", data);
+      });
+  }, []);
+  const getUser = async () => {
+    const req = await fetch("/profile");
+    const res = await req.json();
+    setUser(res.user);
+    console.log(res);
+  };
 
-
-React.useEffect(() => {
-  getUser()
-}, [])
-
+  React.useEffect(() => {
+    getUser();
+  }, []);
 
   //========== return ============
   return (
@@ -66,7 +70,7 @@ React.useEffect(() => {
         </AppBar>
       </Box>
       <Routes>
-        <Route path="/" element={<Home user={user}/>} />
+        <Route path="/" element={<Home user={user} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/newUser" element={<NewUser />} />
       </Routes>

@@ -116,7 +116,7 @@ export default function Profile() {
       </div>
       {<NewPost loggedInUser={loggedInUser} />}
       <div>
-        <h1>Posts</h1>
+        <h1>My Posts</h1>
         <ul>{loggedUserPosts}</ul>
       </div>
       {/* <form>
