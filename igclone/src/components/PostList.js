@@ -2,6 +2,7 @@ import React from "react";
 import Post from './Post'
 
 export default function PostList(userPosts){
+
     const userPostsList = userPosts.userPosts
     const renderedPosts = userPostsList.map((p)=>{
         return p.map((postInfo)=>{
@@ -17,6 +18,7 @@ export default function PostList(userPosts){
                     created_at={postInfo.created_at}
                     updated_at={postInfo.updated_at}
                     comments={postInfo.comments}
+                    user={userPosts.user}
 
                 />
             )

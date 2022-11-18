@@ -1,8 +1,8 @@
 import React from "react";
 import Comments from "./Comments";
 
-export default function CommentsList(comments){
-    const commentList = comments.comments
+export default function CommentsList({comments}){
+    const commentList = comments
     const renderedComments = commentList.map((comment)=>{
         return (
             <Comments
@@ -13,7 +13,7 @@ export default function CommentsList(comments){
                 post_id={comment.post_id}
                 updated_at={comment.updated_at}
                 user_id={comment.user_id}
-                username={comment.commented_user.username}
+                // username={comment.commented_user.username}
             />
         )
     })

@@ -12,7 +12,7 @@ import { isRouteErrorResponse } from 'react-router-dom';
 export default function FormDialog(loggedInUser) {
 //==================== setting states ===================================
   const profileUser = loggedInUser.loggedInUser
-  console.log(profileUser.posts)
+  console.log(profileUser.id)
   const [description, setDescription] = useState("")
   const [iUrl, setIUrl] = useState("")
 
@@ -26,7 +26,7 @@ export default function FormDialog(loggedInUser) {
             description: description,
             image_url: iUrl
           }
-        fetch(`http://localhost:9292/users/${profileUser.id}/posts`, {
+        fetch(`users/1/posts`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

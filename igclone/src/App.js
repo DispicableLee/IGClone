@@ -16,6 +16,20 @@ import Home from "./Home";
 export default function App() {
   //================================ setting up login =====================================
   
+const [user, setUser] = useState({})
+
+const getUser = async () => {
+  const req = await fetch('/profile')
+  const res = await req.json()
+  setUser(res.user)
+  console.log(res)
+}
+
+
+React.useEffect(() => {
+  getUser()
+}, [])
+
 
   //========== return ============
   return (
@@ -52,7 +66,7 @@ export default function App() {
         </AppBar>
       </Box>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home user={user}/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/newUser" element={<NewUser />} />
       </Routes>
