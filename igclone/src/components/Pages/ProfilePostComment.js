@@ -1,6 +1,7 @@
 
 export default function ProfilePostComment({comment}) {
     console.log(comment.id)
+    console.log(comment.commented_username)
     
     function deleteComment(){
         fetch( `/comments/${comment.id}`, {
@@ -10,7 +11,7 @@ export default function ProfilePostComment({comment}) {
     return (
         <div>
             <li>
-                <h4>{comment.commented_user.name}</h4>
+                <h4>{comment.commented_username}</h4>
                 <p>{comment.comment}</p>
                 <p>{comment.likes}</p>
             </li>
