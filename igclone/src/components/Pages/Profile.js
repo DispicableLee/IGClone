@@ -6,6 +6,7 @@ import NewPost from "../Newpost"
 
 export default function Profile() {
   const [loggedUserPosts, setLoggedUserPosts] = useState([]);
+  // const [comment, setComment] = useState("")
   const [loggedInUser, setLoggedInUser] = useState([]);
   const [logUser, setLogUser] = useState({
     password: "",
@@ -73,6 +74,21 @@ export default function Profile() {
   // useEffect(() => {
   //   fetch("http://localhost:9292/user")
 
+  // function addComment(e){
+  //   e.preventDefault()
+  //   const newObj = {
+  //     comment: comment
+  //   }
+  //   fetch(`/comments`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newObj)
+  //   }
+  //   )
+  // }
+
   return (
     <div>
       <div>
@@ -103,6 +119,14 @@ export default function Profile() {
         <h1>Posts</h1>
         <ul>{loggedUserPosts}</ul>
       </div>
+      {/* <form>
+          <input
+            type="text"
+            onChange={(e)=>setComment(e.target.value)}
+            placeholder="Type Your Comment"
+          />
+          <button onClick={addComment}> Add comment</button>
+      </form> */}
     </div>
   );
 }

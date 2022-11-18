@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -39,13 +39,44 @@ export default function Post(
     user_posted_username,
     created_at,
     updated_at, 
-    comments}
+    comments,
+  user}
   ) {
+  const [comment, setComment] = useState("")
   const [expanded, setExpanded] = React.useState(false);
-
+  const [commentList, setCommentList] = useState(comments)
+console.log(user.id)
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+
+
+
+
+  function addComment(e){
+      e.preventDefault()
+      const newObj = {
+        comment: comment,
+        user_id: user.id,
+        post_id: postId
+      }
+      console.log(postId)
+      fetch(`http://localhost:9292/posts/${postId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newObj)
+      }
+      )
+      .then(r => r.json())
+      .then(data => {
+        const newArray = [...comments, data]
+setCommentList(newArray)
+      })
+    }
+
 
   return (
     <Card 
@@ -101,7 +132,16 @@ export default function Post(
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <CommentsList comments={comments} poster={user_posted_username}/>
+
+          <CommentsList comments={commentList} poster={user_posted_username}/>
+          <form>
+          <input
+            type="text"
+            onChange={(e)=>setComment(e.target.value)}
+            placeholder="Type Your Comment"
+          />
+          <button onClick={(e) => addComment(e)}> Add comment</button>
+      </form>
         </CardContent>
       </Collapse>
     </Card>

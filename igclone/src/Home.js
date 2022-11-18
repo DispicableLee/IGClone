@@ -4,7 +4,7 @@ import PostList from './components/PostList'
 //================================ useState/useEffect =====================================
 import { useState, useEffect } from "react";
 
-export default function Home() {
+export default function Home({user}) {
   const [userList, setUserList] = useState([]);
   //========================== initial fetch ================================================
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="App">
       {/* ========================================= header w/routes =================================== */}
-      <PostList userPosts={userPosts} />
+      <PostList user={user} userPosts={userPosts} />
     </div>
   );
 }

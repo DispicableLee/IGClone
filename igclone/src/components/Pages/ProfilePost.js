@@ -1,4 +1,6 @@
 import ProfilePostComment from "./ProfilePostComment"
+import Comments from "../Comments"
+
 
 export default function ProfilePost({post, user}) {
 
@@ -15,6 +17,7 @@ export default function ProfilePost({post, user}) {
                    {post.comments.map(comment => <ProfilePostComment key={comment.id} comment={comment}/>)}
                 </ul>
             </li>
+            <Comments />
         </div>
     )
 }

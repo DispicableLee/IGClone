@@ -1,6 +1,11 @@
+
 export default function ProfilePostComment({comment}) {
-
-
+    console.log(comment.id)
+    
+    function deleteComment(){
+        fetch( `/comments/${comment.id}`, {
+            method: "DELETE",
+        })}
 
     return (
         <div>
@@ -9,6 +14,9 @@ export default function ProfilePostComment({comment}) {
                 <p>{comment.comment}</p>
                 <p>{comment.likes}</p>
             </li>
+            <button onClick={deleteComment}>delete</button>
+   
+
         </div>
     )
 }
